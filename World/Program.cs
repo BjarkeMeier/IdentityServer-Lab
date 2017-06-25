@@ -8,19 +8,20 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace World
 {
-    public class Program
+  public class Program
+  {
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .UseApplicationInsights()
-                .Build();
+      Console.Title = "World";
+      var host = new WebHostBuilder()
+          .UseKestrel()
+          .UseContentRoot(Directory.GetCurrentDirectory())
+          .UseIISIntegration()
+          .UseStartup<Startup>()
+          .UseApplicationInsights()
+          .Build();
 
-            host.Run();
-        }
+      host.Run();
     }
+  }
 }

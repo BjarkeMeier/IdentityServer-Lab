@@ -20,7 +20,11 @@ namespace IdentityServer
       services.AddIdentityServer()
         .AddTemporarySigningCredential()
         .AddInMemoryApiResources(Config.GetApiResources())
-        .AddInMemoryClients(Config.GetClients());
+        .AddInMemoryClients(Config.GetClients())
+        // adds support for the resource owner password grant (deprecated)
+        // adds support to user related services typically used by a login UI(we’ll use that in the next quickstart)
+        // adds support for a profile service based on the test users(you’ll learn more about that in the next quickstart)
+        .AddTestUsers(Config.GetUsers());
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

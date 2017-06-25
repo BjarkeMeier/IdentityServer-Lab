@@ -13,7 +13,7 @@ namespace Center
   {
     static void Main(string[] args)
     {
-      Console.Title = "Center";
+      Console.Title = "ro-Center";
       new Program().MainAsync().GetAwaiter().GetResult();
     }
 
@@ -40,8 +40,8 @@ namespace Center
       var disco = await DiscoveryClient.GetAsync("http://localhost:5000");
 
       // Request access token for the World API
-      var tokenClient = new TokenClient(disco.TokenEndpoint, "center-client", "center-client-secret");
-      var tokenResponse = await tokenClient.RequestClientCredentialsAsync("world-api");
+      var tokenClient = new TokenClient(disco.TokenEndpoint, "ro-center-client", "ro-center-client-secret");
+      var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync("alice", "password", "world-api");
 
       if (tokenResponse.IsError)
         throw new Exception(tokenResponse.Error);
